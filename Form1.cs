@@ -47,7 +47,7 @@ namespace check
             full_valPercent += percentVal;
             full += totalTotalPrice;
             textBox_priceInTotal.Text = full_price.ToString();
-            textBox_percentInTotal.Text += full_valPercent.ToString();
+            textBox_percentInTotal.Text = full_valPercent.ToString();
             textBox_inCassa.Text = full.ToString();
         }
 
