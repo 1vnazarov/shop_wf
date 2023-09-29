@@ -40,17 +40,17 @@
             this.label_name = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.label_info = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_info = new System.Windows.Forms.TextBox();
             this.button_addToCart = new System.Windows.Forms.Button();
             this.button_clear = new System.Windows.Forms.Button();
             this.button_exit = new System.Windows.Forms.Button();
             this.groupBox_total = new System.Windows.Forms.GroupBox();
-            this.label_priceInTotal = new System.Windows.Forms.Label();
-            this.textBox_priceInTotal = new System.Windows.Forms.TextBox();
-            this.label_percentInTotal = new System.Windows.Forms.Label();
-            this.textBox_percentInTotal = new System.Windows.Forms.TextBox();
-            this.label_inCassa = new System.Windows.Forms.Label();
             this.textBox_inCassa = new System.Windows.Forms.TextBox();
+            this.label_inCassa = new System.Windows.Forms.Label();
+            this.textBox_percentInTotal = new System.Windows.Forms.TextBox();
+            this.label_percentInTotal = new System.Windows.Forms.Label();
+            this.textBox_priceInTotal = new System.Windows.Forms.TextBox();
+            this.label_priceInTotal = new System.Windows.Forms.Label();
             this.groupBox_about.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_amount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -81,6 +81,7 @@
             this.textBox_percent.Name = "textBox_percent";
             this.textBox_percent.Size = new System.Drawing.Size(100, 23);
             this.textBox_percent.TabIndex = 7;
+            this.textBox_percent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_number_KeyPress);
             // 
             // numericUpDown_amount
             // 
@@ -95,6 +96,7 @@
             this.textBox_price.Name = "textBox_price";
             this.textBox_price.Size = new System.Drawing.Size(100, 23);
             this.textBox_price.TabIndex = 5;
+            this.textBox_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_number_KeyPress);
             // 
             // textBox_name
             // 
@@ -153,15 +155,16 @@
             this.label_info.TabIndex = 1;
             this.label_info.Text = "Информация о товарах:";
             // 
-            // textBox1
+            // textBox_info
             // 
-            this.textBox1.Location = new System.Drawing.Point(13, 187);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(221, 181);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox_info.Location = new System.Drawing.Point(13, 187);
+            this.textBox_info.Multiline = true;
+            this.textBox_info.Name = "textBox_info";
+            this.textBox_info.ReadOnly = true;
+            this.textBox_info.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_info.Size = new System.Drawing.Size(221, 181);
+            this.textBox_info.TabIndex = 2;
+            this.textBox_info.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button_addToCart
             // 
@@ -172,6 +175,7 @@
             this.button_addToCart.TabIndex = 3;
             this.button_addToCart.Text = "Добавить товар в корзину";
             this.button_addToCart.UseVisualStyleBackColor = true;
+            this.button_addToCart.Click += new System.EventHandler(this.button_addToCart_Click);
             // 
             // button_clear
             // 
@@ -182,6 +186,7 @@
             this.button_clear.TabIndex = 4;
             this.button_clear.Text = "Очистить корзину";
             this.button_clear.UseVisualStyleBackColor = true;
+            this.button_clear.Click += new System.EventHandler(this.button_clear_Click);
             // 
             // button_exit
             // 
@@ -210,39 +215,13 @@
             this.groupBox_total.TabStop = false;
             this.groupBox_total.Text = "Итоговые расчеты";
             // 
-            // label_priceInTotal
+            // textBox_inCassa
             // 
-            this.label_priceInTotal.AutoSize = true;
-            this.label_priceInTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_priceInTotal.Location = new System.Drawing.Point(3, 19);
-            this.label_priceInTotal.Name = "label_priceInTotal";
-            this.label_priceInTotal.Size = new System.Drawing.Size(122, 21);
-            this.label_priceInTotal.TabIndex = 8;
-            this.label_priceInTotal.Text = "Сумма за товар";
-            // 
-            // textBox_priceInTotal
-            // 
-            this.textBox_priceInTotal.Location = new System.Drawing.Point(121, 21);
-            this.textBox_priceInTotal.Name = "textBox_priceInTotal";
-            this.textBox_priceInTotal.Size = new System.Drawing.Size(79, 23);
-            this.textBox_priceInTotal.TabIndex = 8;
-            // 
-            // label_percentInTotal
-            // 
-            this.label_percentInTotal.AutoSize = true;
-            this.label_percentInTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_percentInTotal.Location = new System.Drawing.Point(1, 48);
-            this.label_percentInTotal.Name = "label_percentInTotal";
-            this.label_percentInTotal.Size = new System.Drawing.Size(112, 21);
-            this.label_percentInTotal.TabIndex = 9;
-            this.label_percentInTotal.Text = "Сумма скидки";
-            // 
-            // textBox_percentInTotal
-            // 
-            this.textBox_percentInTotal.Location = new System.Drawing.Point(118, 48);
-            this.textBox_percentInTotal.Name = "textBox_percentInTotal";
-            this.textBox_percentInTotal.Size = new System.Drawing.Size(79, 23);
-            this.textBox_percentInTotal.TabIndex = 10;
+            this.textBox_inCassa.Location = new System.Drawing.Point(118, 74);
+            this.textBox_inCassa.Name = "textBox_inCassa";
+            this.textBox_inCassa.ReadOnly = true;
+            this.textBox_inCassa.Size = new System.Drawing.Size(79, 23);
+            this.textBox_inCassa.TabIndex = 12;
             // 
             // label_inCassa
             // 
@@ -254,12 +233,41 @@
             this.label_inCassa.TabIndex = 11;
             this.label_inCassa.Text = "В кассу";
             // 
-            // textBox_inCassa
+            // textBox_percentInTotal
             // 
-            this.textBox_inCassa.Location = new System.Drawing.Point(118, 74);
-            this.textBox_inCassa.Name = "textBox_inCassa";
-            this.textBox_inCassa.Size = new System.Drawing.Size(79, 23);
-            this.textBox_inCassa.TabIndex = 12;
+            this.textBox_percentInTotal.Location = new System.Drawing.Point(118, 48);
+            this.textBox_percentInTotal.Name = "textBox_percentInTotal";
+            this.textBox_percentInTotal.ReadOnly = true;
+            this.textBox_percentInTotal.Size = new System.Drawing.Size(79, 23);
+            this.textBox_percentInTotal.TabIndex = 10;
+            // 
+            // label_percentInTotal
+            // 
+            this.label_percentInTotal.AutoSize = true;
+            this.label_percentInTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_percentInTotal.Location = new System.Drawing.Point(1, 48);
+            this.label_percentInTotal.Name = "label_percentInTotal";
+            this.label_percentInTotal.Size = new System.Drawing.Size(112, 21);
+            this.label_percentInTotal.TabIndex = 9;
+            this.label_percentInTotal.Text = "Сумма скидки";
+            // 
+            // textBox_priceInTotal
+            // 
+            this.textBox_priceInTotal.Location = new System.Drawing.Point(121, 21);
+            this.textBox_priceInTotal.Name = "textBox_priceInTotal";
+            this.textBox_priceInTotal.ReadOnly = true;
+            this.textBox_priceInTotal.Size = new System.Drawing.Size(79, 23);
+            this.textBox_priceInTotal.TabIndex = 8;
+            // 
+            // label_priceInTotal
+            // 
+            this.label_priceInTotal.AutoSize = true;
+            this.label_priceInTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label_priceInTotal.Location = new System.Drawing.Point(3, 19);
+            this.label_priceInTotal.Name = "label_priceInTotal";
+            this.label_priceInTotal.Size = new System.Drawing.Size(122, 21);
+            this.label_priceInTotal.TabIndex = 8;
+            this.label_priceInTotal.Text = "Сумма за товар";
             // 
             // Form1
             // 
@@ -270,9 +278,10 @@
             this.Controls.Add(this.button_exit);
             this.Controls.Add(this.button_clear);
             this.Controls.Add(this.button_addToCart);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_info);
             this.Controls.Add(this.label_info);
             this.Controls.Add(this.groupBox_about);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.groupBox_about.ResumeLayout(false);
@@ -299,7 +308,7 @@
         private Label label_name;
         private BindingSource bindingSource1;
         private Label label_info;
-        private TextBox textBox1;
+        private TextBox textBox_info;
         private Button button_addToCart;
         private Button button_clear;
         private Button button_exit;
