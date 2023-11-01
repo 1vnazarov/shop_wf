@@ -76,7 +76,7 @@ namespace check
             double onePrice = price;
             double amount = Convert.ToDouble(numericUpDown_amount.Value);
             price *= amount;
-            double percent = Convert.ToDouble(textBox_percent.Text);
+            double percent = Convert.ToDouble(textBox_percent.Text != "" ? textBox_percent.Text : "0");
             double percentVal = price * (percent / 100.0);
             double totalPrice = price - percentVal;
             double nds = 0.13 * totalPrice;
@@ -108,7 +108,7 @@ namespace check
             textBox_percentInTotal.Text = "";
             textBox_inCassa.Text = "";
             textBox_info.Text = "";
-            fileWrite();
+            fileWrite(null);
         }
     }
 }
